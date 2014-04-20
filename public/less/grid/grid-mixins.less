@@ -1,0 +1,27 @@
+// grid generator. -- after writing this code I was thinking sass would have been ideal for this use case.
+
+
+.grid-col (@type, @index, @max) when (@index > 0) and (@index < @max) {
+
+	.col-@{type}-@{index}{
+		width: (100% / @max) * @index;
+	}
+
+	// next iteration
+	.grid-col(@type, @index + 1, @max);
+}
+
+// just because there is no if/else in less we need to repeat ourselves... but it's ok
+
+.grid-col (@type, @index, @max) when (@index = @max) {
+
+	.col-@{type}-@{index}{
+		width: (100% / @max) * @index;
+	}
+
+	.grid-col(@type, @index + 1, @max);
+}
+
+.grid-col-gen (@type, @max) when ( @max > 0) {
+	.grid-col(@type, 1, @max);
+}

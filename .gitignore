@@ -11,5 +11,11 @@ pids
 logs
 results
 
+
 npm-debug.log
 node_modules
+
+public/production
+public/uglify
+public/css
+public/js-uglify/

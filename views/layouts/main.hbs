@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>{{title}}</title>
+    {{{block "stylesheets"}}}    
+</head>
+<body>
+   {{{body}}}
+
+   {{! Only needs the Handlebars Runtime, because the exposed templates are precompiled. }}
+    <script src="http://rawgithub.com/wycats/handlebars.js/1.0.0/dist/handlebars.runtime.js"></script>
+    {{#if isDev}}
+    <script src="//localhost:35729/livereload.js"></script>
+    {{/if}}
+    <script>
+
+
+        console.log({{{json data}}});
+        (function () {
+            var revive    = Handlebars.template,
+                templates = Handlebars.templates = Handlebars.templates || {};
+
+          {{#templates}}
+            templates['{{{name}}}'] = revive({{{template}}});
+          {{/templates}}
+
+
+          //console.log(templates.shared());
+        }());
+    </script>
+</body>
+</html>

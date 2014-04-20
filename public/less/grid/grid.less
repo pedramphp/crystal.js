@@ -1,0 +1,70 @@
+@import "../core/variables.less";
+@import "../core/mixins.less";
+@import "../grid/grid-mixins.less";
+
+.grid-cntr {
+  margin-right: auto;
+  margin-left: auto;
+  .clearfix();
+}
+
+.row{
+  .clearfix();
+}
+
+.row, 
+.row > [class ^= "col-"],
+.row > [class *= " col-"],
+.row > [class ^= "col-"]:before,
+.row > [class *= " col-"]:before,
+.row > [class ^= "col-"]:after,
+.row > [class *= " col-"]:after{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+[class ^= "col-xs-"],
+[class *= " col-xs-"],
+[class ^= "col-sm-"],
+[class *= " col-sm-"],
+[class ^= "col-md-"],
+[class *= " col-md-"],
+[class ^= "col-lg-"],
+[class *= " col-lg-"]{
+  float: left;
+  padding-left: @grid-gutter-size;
+  padding-right: @grid-gutter-size;
+  min-height: 1px;
+}
+
+// Generate Extra Small grid Styles 
+.grid-col-gen(xs, @grid-max-cols);
+
+
+@media @grid-tablet-query{
+  .grid-cntr {
+    max-width: @grid-tablet-max-width;
+  }
+
+  // Generate Small grid Styles
+  .grid-col-gen(sm, @grid-max-cols);
+}
+
+@media @grid-desktop-query{
+  .grid-cntr {
+    max-width: @grid-desktop-max-width;
+  }
+
+   // Generate Medium grid Styles
+  .grid-col-gen(md, @grid-max-cols);
+}
+
+@media @grid-large-desktop-query{
+  .grid-cntr {
+    max-width: @grid-large-desktop-max-width;
+  }
+
+  // Generate Large grid Styles
+  .grid-col-gen(lg, @grid-max-cols);
+}
