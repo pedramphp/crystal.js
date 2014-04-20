@@ -72,14 +72,14 @@ module.exports = function(grunt) {
 
     watch: {
       staticResources:{
-        files: ['<%= jshint.files %>','<%= csslint.src %>','views/**/*.hbs','src/**/*.*','public/less/**/*.less'],
+        files: ['<%= jshint.files %>','<%= csslint.src %>','views/**/*.hbs','public/less/**/*.less'],
         tasks: ['jshint', 'csslint','less:dev'],
         options: {
           spawn: false, // Without this option specified express won't be reloaded
           livereload: true
         }
       },
-      node:{
+      express:{
         files: ['app.js','src/**/*.*'],
         tasks: ['express:dev'],
         options: {
