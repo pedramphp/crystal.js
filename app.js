@@ -1,7 +1,7 @@
 "use strict";
 var express = require('express'),
-	http =	require('http'),
-	app = express(),
+    http =  require('http'),
+    app = express(),
     exphbs  = require('express3-handlebars'),
     hbs,
     VIEW_EXT_NAME = ".hbs",
@@ -16,8 +16,8 @@ hbs = exphbs.create({
     helpers: {
         extend: function (name, context){
            var block = blocks[name];
-           if (!block) {
-               block = blocks[name] = [];
+            if (!block) {
+                block = blocks[name] = [];
            }
 
            block.push(context.fn(this)); // for older versions of handlebars, use block.push(context(this));
